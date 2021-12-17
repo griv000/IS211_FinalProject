@@ -1,0 +1,28 @@
+<html>
+<head><title>Add New Post</title>
+{% for i in user %}
+    <h1>Blog Title: {{ i[5] }}</h1>
+
+</head>
+
+<body style="background-color:lightgrey;">
+
+<P><form action="/addpost/{{ i[0] }}" method="post">
+    
+    <p>New Post Title: <input type="text" name="PostTitle"></p>
+    
+    <p><textarea name="BlogContent" rows="10" cols="50"></textarea></p>
+    
+    Category: <select name="AddCategory">
+
+    <p><option>Select Categories</option>
+    {% for x in categories %}
+        <option value={{ x[0] }}>{{ x[2] }}</option>
+    {% endfor %}
+    </select></p>
+
+    <input type=submit value="Add New Post">
+</form></P>
+{% endfor %}
+</body>
+</html>

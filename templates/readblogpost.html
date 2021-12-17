@@ -1,0 +1,24 @@
+<html>
+<head><title>Blog Post</title>
+    {% for i in post %}
+    <h1><i>Blog: {{ i[2] }}</i></h1>
+    <h1>Post Title: {{ i[4] }}</h1>
+    {% endfor %}
+</head>
+<body style="background-color:lightgrey;">
+
+
+{% for i in post %}
+<ul>
+    <li>Publish Date: {{ i[6] }}</li>
+    <li>Author: {{ i[0] }} {{ i[1] }}</li>
+    <li>Category: <a href="/categoryview/{{ i[8] }}">{{ i[7] }}</a></li>
+    <li><a href="/readpost/{{ i[3] }}">Permalink</a></li>
+</ul>
+<P>Post Content:</br>
+{{ i[5] }}</P>  
+{% endfor %}
+
+
+</body>
+</html>

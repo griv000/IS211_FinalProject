@@ -1,0 +1,28 @@
+<html><head><title>Edit Post</title>
+    <h1>Edit Post</h1>
+    </head>
+
+<body style="background-color:lightgrey;">
+{% for i in blogpost %}
+<P>
+<form action="/editblogpost/{{ i[0] }}" method="post">
+
+<p>Post Title: <input type="text" name="PostTitle" value="{{ i[1] }}"></p>
+<p><textarea name="BlogContent" rows="10" cols="50">{{ i[2] }}</textarea></p>
+<P> Category: <select name="AddCategory">
+
+    <p><option>Select Categories</option>
+    {% for x in categories %}
+        <option value={{ x[0] }}>{{ x[1] }}</option>
+    {% endfor %}
+    </select></p></P>
+
+<p><input type=submit value="Save Post Edits"></p>
+
+</form>
+
+</P>
+{% endfor %}
+</body>
+
+</html>

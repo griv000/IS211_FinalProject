@@ -1,0 +1,19 @@
+<html><head><title></title></head>
+
+<body style="background-color:lightgrey;">
+
+<p>Available posts with category: <strong>{{ active }}</strong>
+
+<ul>
+    
+{% for i in BlogPostSelects %}
+    <li><a href="/readpost/{{ i[0] }}">{{ i[1] }}</a></li>
+{% endfor %}
+
+</ul>
+
+</p>
+<p>{{ MyFound }}</p>
+
+</body>
+</html>

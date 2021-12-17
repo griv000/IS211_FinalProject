@@ -1,0 +1,96 @@
+<html>
+<head><title>Blog Posts</title>
+{% for i in user %}
+    <h1>Blog Title: {{ i[5] }}</h1>
+    <h2>Author: {{ i[1] }} {{ i[2] }}</h2>
+{% endfor %}
+</head>
+
+<body style="background-color:lightgrey;">
+    {% for i in user %}
+
+    <p><form action="/login" method="get">
+        <input type=submit value="Login for more options">
+    </form></p>
+
+    <p><strong>Blog Post Categories:</strong> <a href="/dashboard/{{ i[0] }}">All</a>{% for y in categories %}, <a href="/categoryview/{{ y[0] }}">{{ y[2] }}</a>{% endfor %}
+
+    </p>
+
+
+    {% endfor %}
+
+<table border = 1>
+    <tr><td><strong>Blog Posts</strong></td></tr>
+    {% for i in blogposts %}
+    {% if i[5] == "ACTIVE" %}
+    <tr>
+        <td>{{ i[4] }}</td>
+        <td><a href="/readpost/{{ i[0] }}">{{ i[1] }}</a></td>
+        
+ 
+
+    </tr>
+    {% endif %}
+    {% endfor %}
+     
+
+</table>
+
+
+<p></p>
+
+{% for z in user %}
+{% if z[6] == "True" %}
+<hr>
+<h1>Admin Tools Table</h1>
+
+<P><form action="/addpost/{{ z[0] }}" method="get">
+    <input type=submit value="Add New Post">
+</form></P>
+<table border = 1>
+    <tr><td><strong>Blog Posts</strong></td></tr>
+    {% for x in joined %}
+    <tr>
+        <td>{{ x[5] }}</td>
+        <td><a href="/readpost/{{ x[2] }}">{{ x[3] }}</a></td>
+        
+
+    {% if x[1] == "True" %}
+
+        <td><form action="/editblogpost/{{ x[2] }}" method="get">
+                <input type=submit  value="Click to Edit Post">
+            </form>
+        </td>
+
+        <td><form action="/deleteblogpost/{{ x[2] }}" method="post">
+            <input type=submit  value="Click to Delete Post">
+        </form>
+        </td>
+
+        <td><form action="/activeblogpost/{{ x[2] }}" method="post">
+            <input type=submit value="Click to Inactivate/Activate Post">
+        </form>
+        </td>
+
+        <td>Post Status: 
+            {% if x[6] == "ACTIVE" %}
+                Active
+            {% else %}
+                Inactive
+            {% endif %}
+        </td>
+    {% else %}
+        Not Active
+    {% endif %}    
+    </tr>
+    {% endfor %}
+     
+
+</table>
+
+{% endif %}
+{% endfor %}
+
+</body>
+</html>

@@ -1,0 +1,14 @@
+<html>
+<head><title>Blog Listing</title>
+    <h1>Choose a Blog</h1></head>
+<body style="background-color:lightgrey;">
+
+<ul>
+    {% for i in bloglist %}
+    <li><a href="/dashboard/{{ i[0] }}">{{ i[5] }}</a> by {{ i[1] }} {{ i[2] }}</li>
+    {% endfor %}
+
+</ul>
+
+</body>
+</html>
